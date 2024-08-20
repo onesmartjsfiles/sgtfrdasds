@@ -1,4 +1,3 @@
-
 var host = 'http://tizen.smartone-iptv.com/';
 var subdomain = 'tizen'; //String(/:\/\/([^\/]+)/.exec(window.location.href)[1].split('.')[0] || window.location.host.split('.')[0]); // 
 
