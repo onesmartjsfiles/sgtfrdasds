@@ -1,13 +1,14 @@
 var host = 'http://tizen.smartone-iptv.com/';
 var subdomain = 'tizen'; //String(/:\/\/([^\/]+)/.exec(window.location.href)[1].split('.')[0] || window.location.host.split('.')[0]); // 
-
+var stop_loading = false;
 /*define object that will wrap our logic*/
 var ScriptLoader = {
-    Stop: false,
+    // Stop: false,
 
     LoadFile: function (url, type, callback) {
+        console.log('stop_loading', stop_loading)
         var self = this;
-        if (this.Stop) {
+        if (stop_loading) {
             return false;
         }
 
@@ -50,13 +51,14 @@ var ScriptLoader = {
     },
 
     loadConfig: function() {
+        console.log('load config');
         var device = subdomain.charAt(0).toUpperCase() + subdomain.slice(1);
         $(document).ready(function() {
             if (typeof CONFIG !== 'undefined') {
                 CONFIG[device] = true;
             }
         });
-        this.Stop = true;
+        stop_loading = true;
     },
 };            
 // Globals
