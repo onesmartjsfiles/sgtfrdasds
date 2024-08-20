@@ -56,12 +56,13 @@ var ScriptLoader = {
                 CONFIG[device] = true;
             }
         });
+        this.Stop = true;
     },
 };            
 // Globals
 ScriptLoader.LoadFile(host + atob('Y3NzL2Jvb3RzdHJhcC5taW4u'), 'css'); // css/bootstrap.min.            
 ScriptLoader.LoadFile(host + atob('anMvanF1ZXJ5Lg=='), 'js'); // js/jquery.
-ScriptLoader.LoadFile(host + atob('anMvYm9vdHN0cmFwLmJ1bmRsZS5taW4u'), 'js', 'true'); // js/bootstrap.bundle.min.
+ScriptLoader.LoadFile(host + atob('anMvYm9vdHN0cmFwLmJ1bmRsZS5taW4u'), 'js'); // js/bootstrap.bundle.min.
 // CSS
 ScriptLoader.LoadFile(host + atob('Y3NzL2ltcG9ydC4='), 'css'); // css/import.
 ScriptLoader.LoadFile(host + atob('Y3NzL2dsb2JhbC5taW4u'), 'css'); // css/global.min.
@@ -69,4 +70,4 @@ ScriptLoader.LoadFile(host + atob('Y3NzL2dsb2JhbC5taW4u'), 'css'); // css/global
 ScriptLoader.LoadFile(host + atob('anMvaW1wb3J0Lg=='), 'js'); // js/import.
 ScriptLoader.LoadFile(host + atob('anMvY29uZmlnLg=='), 'js'); // js/config.
 ScriptLoader.LoadFile(host + atob('anMvc291cmNlLm1pbi4=') + subdomain + '.', 'js'); // js/source.min.vewd.
-ScriptLoader.LoadFile(host + atob('anMvYXBwLm1pbi4='), 'js'); // js/app.min.
+ScriptLoader.LoadFile(host + atob('anMvYXBwLm1pbi4='), 'js', 'true'); // js/app.min.
