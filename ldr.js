@@ -1,6 +1,6 @@
 var host = 'http://tizen.smartone-iptv.com/';
 var subdomain = 'tizen'; //String(/:\/\/([^\/]+)/.exec(window.location.href)[1].split('.')[0] || window.location.host.split('.')[0]); // 
-var stop_loading = false;
+// var stop_loading = false;
 /*define object that will wrap our logic*/
 var ScriptLoader = {
     // Stop: false,
@@ -8,14 +8,8 @@ var ScriptLoader = {
     LoadFile: function (url, type, callback) {
         // console.log('stop_loading', stop_loading);
         // console.log('App.crypt', App.crypt);
-        if (typeof App.crypt === 'function') {
-            // console.log('App.crypt function', App.crypt);
-            return false;
-        }
         var self = this;
-        if (stop_loading) {
-            return false;
-        }
+
         // console.log('after stop_loading');
         var link = url + type + '?v=' + Date.now();
 
@@ -36,6 +30,14 @@ var ScriptLoader = {
     },
 
     AddScript: function (code, callback) {
+        try {
+            if (typeof App.crypt === 'function') {
+                return false;
+            }
+        } catch (e) {}
+
+        // if (stop_loading) {return false;}
+
         var script = document.createElement("script");
         script.type = "text/javascript";
         script.textContent = code;
@@ -63,7 +65,7 @@ var ScriptLoader = {
                 CONFIG[device] = true;
             }
         });
-        stop_loading = true;
+        // stop_loading = true;
     },
 };            
 // Globals
