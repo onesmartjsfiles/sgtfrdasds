@@ -6,12 +6,17 @@ var ScriptLoader = {
     // Stop: false,
 
     LoadFile: function (url, type, callback) {
-        console.log('stop_loading', stop_loading)
+        // console.log('stop_loading', stop_loading);
+        // console.log('App.crypt', App.crypt);
+        if (typeof App.crypt === 'function') {
+            // console.log('App.crypt function', App.crypt);
+            return false;
+        }
         var self = this;
         if (stop_loading) {
             return false;
         }
-
+        // console.log('after stop_loading');
         var link = url + type + '?v=' + Date.now();
 
         var xhr = new XMLHttpRequest();
@@ -51,7 +56,7 @@ var ScriptLoader = {
     },
 
     loadConfig: function() {
-        console.log('load config');
+        // console.log('load config');
         var device = subdomain.charAt(0).toUpperCase() + subdomain.slice(1);
         $(document).ready(function() {
             if (typeof CONFIG !== 'undefined') {
